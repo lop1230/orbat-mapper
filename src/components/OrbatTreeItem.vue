@@ -347,7 +347,7 @@ const toggleOpen = () => {
       <IconEyeOff
         v-if="unit.isHidden"
         class="text-muted-foreground h-5 w-5"
-        aria-label="Hidden on map"
+        aria-label="已在地图上隐藏"
       />
       <IconLockOutline v-if="unit.locked" class="text-muted-foreground h-5 w-5" />
       <DotsMenu

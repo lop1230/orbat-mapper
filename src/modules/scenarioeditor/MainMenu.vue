@@ -235,57 +235,57 @@ const { history: shareHistory, clearHistory: clearShareHistory } = useShareHisto
           >
           <DropdownMenuSeparator />
           <DropdownMenuCheckboxItem v-model="showScaleLine" @select.prevent>
-            Scale line
+            比例尺
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem v-model="showLocation" @select.prevent>
-            Pointer location
+            指针位置
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem v-model="showDayNightTerminator" @select.prevent>
-            Day/nigth terminator
+            昼夜晨昏线
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
             v-model="mapSettings.mapUnitLabelBelow"
             @select.prevent
           >
-            Unit labels below icons
+            在图标下方显示单位标签
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
             v-model="mapSettings.mapWrapUnitLabels"
             @select.prevent
             v-if="mapSettings.mapUnitLabelBelow"
           >
-            Wrap long unit labels
+            长单位标签换行
           </DropdownMenuCheckboxItem>
           <!-- Only the MapLibre map in map edit mode renders terrain. -->
           <TerrainMenu kind="dropdown" v-if="route.name === MAP_EDIT_MODE_ROUTE" />
 
           <DropdownMenuSub>
             <DropdownMenuSubTrigger inset
-              ><span class="pr-4">Measurement units</span></DropdownMenuSubTrigger
+              ><span class="pr-4">测量单位</span></DropdownMenuSubTrigger
             >
             <DropdownMenuSubContent>
               <DropdownMenuRadioGroup v-model="measurementUnit">
                 <DropdownMenuRadioItem value="metric" @select.prevent
-                  >Metric
+                  >公制
                 </DropdownMenuRadioItem>
                 <DropdownMenuRadioItem value="imperial" @select.prevent
-                  >Imperial
+                  >英制
                 </DropdownMenuRadioItem>
                 <DropdownMenuRadioItem value="nautical" @select.prevent
-                  >Nautical
+                  >航海单位
                 </DropdownMenuRadioItem>
               </DropdownMenuRadioGroup>
             </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger inset>Coordinate format</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger inset>坐标格式</DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
               <DropdownMenuRadioGroup v-model="coordinateFormat">
                 <DropdownMenuRadioItem value="dms" @select.prevent
-                  >Degrees, minutes, seconds
+                  >度、分、秒
                 </DropdownMenuRadioItem>
                 <DropdownMenuRadioItem value="dd" @select.prevent
-                  >Decimal degrees
+                  >十进制度
                 </DropdownMenuRadioItem>
                 <DropdownMenuRadioItem value="MGRS" @select.prevent
                   >MGRS
@@ -297,15 +297,15 @@ const { history: shareHistory, clearHistory: clearShareHistory } = useShareHisto
       </DropdownMenuSub>
       <DropdownMenuSeparator />
       <DropdownMenuSub>
-        <DropdownMenuSubTrigger>Tools</DropdownMenuSubTrigger>
+        <DropdownMenuSubTrigger>工具</DropdownMenuSubTrigger>
         <DropdownMenuSubContent>
           <DropdownMenuItem @select="emit('action', 'browseSymbols')"
-            >Browse symbols
+            >浏览符号
           </DropdownMenuItem>
         </DropdownMenuSubContent>
       </DropdownMenuSub>
       <DropdownMenuSub>
-        <DropdownMenuSubTrigger>Help</DropdownMenuSubTrigger>
+        <DropdownMenuSubTrigger>帮助</DropdownMenuSubTrigger>
         <DropdownMenuSubContent>
           <DropdownMenuItem as-child
             ><a
@@ -315,11 +315,11 @@ const { history: shareHistory, clearHistory: clearShareHistory } = useShareHisto
               "
               target="_blank"
             >
-              Documentation
+              文档
             </a></DropdownMenuItem
           >
           <DropdownMenuItem @select="emit('uiAction', 'showKeyboardShortcuts')"
-            >Keyboard shortcuts
+            >键盘快捷键
             <DropdownMenuShortcut class="ml-4">?</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuSubContent>
