@@ -252,9 +252,9 @@ watchEffect(() => {
     v-if="isGetLocationActive"
     class="bg-popover/75! absolute bottom-14 overflow-visible p-2 px-4 text-sm sm:bottom-16 sm:left-1/2 sm:-translate-x-1/2"
   >
-    Click on map or ORBAT to place unit.
+    在地图或 ORBAT 上点击以放置单位。
     <Button type="button" variant="link" size="sm" @click="cancelGetLocation()">
-      Cancel
+      取消
     </Button>
   </FloatingPanel>
   <nav
@@ -262,7 +262,7 @@ watchEffect(() => {
   >
     <section class="flex shrink-0 items-center justify-between">
       <MainToolbarButton
-        title="Keep tool active to add multiple"
+        title="保持工具激活以添加多个"
         @click="toggleAddMultiple()"
         class="hidden sm:flex"
       >

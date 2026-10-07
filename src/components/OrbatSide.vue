@@ -324,7 +324,7 @@ const onHeaderKeydown = (event: KeyboardEvent) => {
       <button
         type="button"
         class="text-muted-foreground hover:text-foreground ml-1 flex-none"
-        title="Toggle visibility"
+        title="切换可见性"
         @click="onSideAction(isHidden ? SideActions.Show : SideActions.Hide)"
       >
         <IconEyeOff v-if="isHidden" class="h-5 w-5" />
@@ -334,10 +334,10 @@ const onHeaderKeydown = (event: KeyboardEvent) => {
         v-if="!hideFilter"
         v-model="showFilter"
         v-slot="{ pressed }"
-        title="Toggle ORBAT filter"
+        title="切换 ORBAT 筛选"
         class="text-muted-foreground hover:text-foreground ml-1"
       >
-        <span class="sr-only">Toggle ORBAT filter</span>
+        <span class="sr-only">切换 ORBAT 筛选</span>
         <IconFilterVariantPlus v-if="pressed" class="h-5 w-5" aria-hidden="true" />
         <IconFilterVariant v-else class="h-5 w-5" aria-hidden="true" />
       </Toggle>

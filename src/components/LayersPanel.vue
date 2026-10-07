@@ -198,7 +198,7 @@ function updateOpacity(layerInfo: LayerInfo, opacity: number) {
 
 <template>
   <div>
-    <p class="text-xs font-medium tracking-wider uppercase">Base layers</p>
+    <p class="text-xs font-medium tracking-wider uppercase">底图图层</p>
 
     <BaseLayerSwitcher
       class="mt-4"

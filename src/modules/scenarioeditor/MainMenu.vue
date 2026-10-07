@@ -88,7 +88,7 @@ const { history: shareHistory, clearHistory: clearShareHistory } = useShareHisto
     <DropdownMenuContent class="" align="start" :side-offset="10">
       <DropdownMenuItem as-child>
         <router-link :to="{ name: LANDING_PAGE_ROUTE }" class="font-medium"
-          >Home
+          >首页
         </router-link>
       </DropdownMenuItem>
 
@@ -97,44 +97,44 @@ const { history: shareHistory, clearHistory: clearShareHistory } = useShareHisto
         <DropdownMenuItem @select="toggleDark()">
           <SunIcon v-if="isDark" class="mr-2 h-4 w-4" />
           <MoonStarIcon v-else class="mr-2 h-4 w-4" />
-          <span>{{ isDark ? "Light mode" : "Dark mode" }}</span>
+          <span>{{ isDark ? "亮色模式" : "暗色模式" }}</span>
         </DropdownMenuItem>
       </UseDark>
       <DropdownMenuSeparator v-if="isMobile" />
       <DropdownMenuItem @select="emit('uiAction', 'showSearch')"
-        >Search
+        >搜索
         <DropdownMenuShortcut class="ml-4">Ctrl/⌘ K</DropdownMenuShortcut>
       </DropdownMenuItem>
       <DropdownMenuSeparator />
       <DropdownMenuSub>
-        <DropdownMenuSubTrigger>File</DropdownMenuSubTrigger>
+        <DropdownMenuSubTrigger>文件</DropdownMenuSubTrigger>
         <DropdownMenuSubContent>
           <DropdownMenuItem @select="emit('action', 'exportJson')"
-            >Download scenario
+            >下载方案
           </DropdownMenuItem>
           <DropdownMenuItem @select="emit('action', 'exportEncrypted')"
-            >Download encrypted scenario...
+            >下载加密方案…
           </DropdownMenuItem>
           <DropdownMenuItem @select="emit('action', 'save')">
-            Save scenario
+            保存方案
           </DropdownMenuItem>
           <DropdownMenuItem @select="emit('action', 'loadNew')">
-            Load scenario...
+            加载方案…
           </DropdownMenuItem>
           <DropdownMenuItem @select="emit('action', 'createNew')">
-            New scenario...
+            新建方案…
           </DropdownMenuItem>
 
           <DropdownMenuSeparator />
           <DropdownMenuItem @select="emit('action', 'share')">
-            Share scenario online...
+            在线分享方案…
           </DropdownMenuItem>
 
           <DropdownMenuItem @select="emit('action', 'shareAsUrl')">
-            Share scenario as URL...
+            分享方案为链接…
           </DropdownMenuItem>
           <DropdownMenuSub v-if="shareHistory.length > 0">
-            <DropdownMenuSubTrigger>Recently shared</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger>最近分享</DropdownMenuSubTrigger>
             <DropdownMenuSubContent class="w-80">
               <DropdownMenuItem v-for="item in shareHistory" :key="item.id" as-child>
                 <a
@@ -156,38 +156,38 @@ const { history: shareHistory, clearHistory: clearShareHistory } = useShareHisto
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem @select="clearShareHistory"
-                >Clear history</DropdownMenuItem
+                >清除历史记录</DropdownMenuItem
               >
             </DropdownMenuSubContent>
           </DropdownMenuSub>
 
           <DropdownMenuItem @select="emit('action', 'export')">
-            Export scenario data...
+            导出方案数据…
           </DropdownMenuItem>
           <DropdownMenuItem @select="emit('action', 'exportToImage')">
-            Export map as image
+            将地图导出为图片
           </DropdownMenuItem>
           <DropdownMenuItem @select="emit('action', 'import')">
-            Import data...
+            导入数据…
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem @select="emit('action', 'duplicate')">
-            Duplicate scenario
+            复制方案
           </DropdownMenuItem>
           <DropdownMenuItem @select="emit('action', 'showInfo')">
-            Show scenario info
+            显示方案信息
           </DropdownMenuItem>
         </DropdownMenuSubContent>
       </DropdownMenuSub>
       <DropdownMenuSub>
-        <DropdownMenuSubTrigger><span>Edit</span></DropdownMenuSubTrigger>
+        <DropdownMenuSubTrigger><span>编辑</span></DropdownMenuSubTrigger>
         <DropdownMenuSubContent>
           <DropdownMenuItem @select="undo()" :disabled="!canUndo">
-            Undo
+            撤销
             <DropdownMenuShortcut class="ml-4">Ctrl/⌘ Z</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem @select="redo()" :disabled="!canRedo">
-            Redo
+            重做
             <DropdownMenuShortcut class="ml-4">Ctrl/⌘ shift Z</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -195,43 +195,43 @@ const { history: shareHistory, clearHistory: clearShareHistory } = useShareHisto
             v-if="hasDistinctOpenedBaseline"
             @select="emit('action', 'restoreOriginal')"
           >
-            Revert to opened state
+            恢复为打开时的状态
           </DropdownMenuItem>
           <DropdownMenuItem
             @select="emit('action', 'revertToSaved')"
             :disabled="!hasSavedBaseline"
           >
-            Revert to saved version
+            恢复为已保存的版本
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem @select="emit('action', 'exportToClipboard')">
-            Copy scenario to clipboard
+            复制方案到剪贴板
           </DropdownMenuItem>
           <DropdownMenuItem @select="emit('action', 'pasteFromClipboard')">
-            Paste from clipboard
+            从剪贴板粘贴
             <DropdownMenuShortcut class="ml-4">Ctrl/⌘ V</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuSubContent>
       </DropdownMenuSub>
       <DropdownMenuSub>
-        <DropdownMenuSubTrigger><span class="mr-4">View</span></DropdownMenuSubTrigger>
+        <DropdownMenuSubTrigger><span class="mr-4">视图</span></DropdownMenuSubTrigger>
         <DropdownMenuSubContent>
           <DropdownMenuCheckboxItem v-model="uiSettings.showToolbar" @select.prevent
-            >Map toolbar
+            >地图工具栏
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem v-model="uiSettings.showTimeline" @select.prevent
-            >Timeline
+            >时间轴
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
             v-if="!isMobile"
             v-model="uiSettings.showLeftPanel"
             @select.prevent
-            >ORBAT panel
+            >ORBAT 面板
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
             v-model="uiSettings.showOrbatBreadcrumbs"
             @select.prevent
-            >Unit breadcrumbs</DropdownMenuCheckboxItem
+            >单位面包屑</DropdownMenuCheckboxItem
           >
           <DropdownMenuSeparator />
           <DropdownMenuCheckboxItem v-model="showScaleLine" @select.prevent>

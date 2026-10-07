@@ -59,20 +59,20 @@ const { year, month, day, hour, minute, resDateTime } = useYMDElements({
 });
 
 const form = reactive<NewScenarioForm>({
-  name: "New scenario",
+  name: "新场景",
   description: "",
   sides: [
     {
-      name: "Side 1",
+      name: "阵营 1",
       standardIdentity: SID.Friend,
       symbolOptions: {},
-      units: [{ rootUnitName: "HQ", rootUnitEchelon: "18", rootUnitIcon: "121100" }],
+      units: [{ rootUnitName: "指挥部", rootUnitEchelon: "18", rootUnitIcon: "121100" }],
     },
     {
-      name: "Side 2",
+      name: "阵营 2",
       standardIdentity: SID.Hostile,
       symbolOptions: {},
-      units: [{ rootUnitName: "HQ", rootUnitEchelon: "18", rootUnitIcon: "121100" }],
+      units: [{ rootUnitName: "指挥部", rootUnitEchelon: "18", rootUnitIcon: "121100" }],
     },
   ],
 });
@@ -83,7 +83,7 @@ async function create() {
   newScenario.value.name = form.name;
   newScenario.value.description = form.description;
   newScenario.value.layerStack = [
-    { name: "Features", id: nanoid(), kind: "overlay", items: [] },
+    { name: "要素", id: nanoid(), kind: "overlay", items: [] },
   ];
   newScenario.value.timeZone = timeZone.value;
 
@@ -107,7 +107,7 @@ async function create() {
         unitActions.addUnit(
           {
             id: nanoid(),
-            name: u.rootUnitName ?? "test",
+            name: u.rootUnitName ?? "单位",
             sidc: sidc.toString(),
             subUnits: [],
             _pid: "nn",
@@ -130,14 +130,14 @@ async function create() {
 }
 
 const icons: SymbolValue[] = [
-  { code: "000000", text: "Unspecified" },
-  { code: "110000", text: "Command and Control" },
-  { code: "121100", text: "Infantry" },
-  { code: "121000", text: "Combined Arms" },
-  { code: "121102", text: "Mechanized" },
-  { code: "130300", text: "Artillery" },
-  { code: "120500", text: "Armor" },
-  { code: "160600", text: "Combat Service Support" },
+  { code: "000000", text: "未指定" },
+  { code: "110000", text: "指挥与控制" },
+  { code: "121100", text: "步兵" },
+  { code: "121000", text: "合成兵种" },
+  { code: "121102", text: "机械化" },
+  { code: "130300", text: "炮兵" },
+  { code: "120500", text: "装甲" },
+  { code: "160600", text: "战斗勤务支援" },
 ];
 
 function iconItems(sid: SidValue) {
@@ -159,15 +159,15 @@ function unitSidc(
 
 function addSide() {
   form.sides.push({
-    name: "Side",
+    name: "阵营",
     standardIdentity: SID.Friend,
     symbolOptions: {},
-    units: [{ rootUnitName: "HQ", rootUnitEchelon: "18", rootUnitIcon: "121000" }],
+    units: [{ rootUnitName: "指挥部", rootUnitEchelon: "18", rootUnitIcon: "121000" }],
   });
 }
 
 function addRootUnit(side: InitialSideData) {
-  side.units.push({ rootUnitName: "HQ", rootUnitEchelon: "18", rootUnitIcon: "121000" });
+  side.units.push({ rootUnitName: "指挥部", rootUnitEchelon: "18", rootUnitIcon: "121000" });
 }
 
 function removeUnit(side: InitialSideData, unit: RootUnit) {
@@ -180,11 +180,10 @@ function removeUnit(side: InitialSideData, unit: RootUnit) {
   <div class="min-h-screen py-10">
     <header>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h1 class="text-heading text-3xl leading-tight font-bold">Create new scenario</h1>
+        <h1 class="text-heading text-3xl leading-tight font-bold">创建新场景</h1>
         <div class="prose dark:prose-invert mt-4">
           <p>
-            Here you can provide some initial data for your scenario if you want. You can
-            always change these settings later.
+            如果需要，你可以在这里为场景提供一些初始数据。这些设置之后随时都可以更改。
           </p>
         </div>
       </div>
@@ -194,29 +193,29 @@ function removeUnit(side: InitialSideData, unit: RootUnit) {
         <div class="flex items-center justify-between space-x-3 px-4 sm:px-0">
           <Button as-child variant="link"
             ><a href="https://docs.orbat-mapper.app/guide/getting-started" target="_blank"
-              >View documentation <ExternalLinkIcon />
+              >查看文档 <ExternalLinkIcon />
             </a>
           </Button>
-          <BaseButton primary type="submit">Create scenario</BaseButton>
+          <BaseButton primary type="submit">创建场景</BaseButton>
         </div>
         <FormCard
           class=""
-          label="Basic scenario info"
-          description="Provide a name and description for your scenario."
+          label="场景基本信息"
+          description="为你的场景提供一个名称和描述。"
         >
-          <InputGroup label="Name" v-model="form.name" id="name-input" autofocus />
+          <InputGroup label="名称" v-model="form.name" id="name-input" autofocus />
 
           <SimpleMarkdownInput
-            label="Description"
+            label="描述"
             v-model="form.description"
-            description="Use markdown syntax for formatting"
+            description="使用 Markdown 语法进行格式化"
           />
         </FormCard>
-        <FormCard label="Initial ORBAT">
-          <template #description> Sides and root units.</template>
+        <FormCard label="初始作战序列 (ORBAT)">
+          <template #description> 阵营和根单位。</template>
           <div>
             <ToggleField v-model="noInitialOrbat"
-              >Add sides and root units later
+              >稍后添加阵营和根单位
             </ToggleField>
           </div>
           <template v-if="!noInitialOrbat">
@@ -226,17 +225,17 @@ function removeUnit(side: InitialSideData, unit: RootUnit) {
               class="relative rounded-md border p-4"
             >
               <div class="grid gap-4 md:grid-cols-2">
-                <InputGroup v-model="sideData.name" label="Side name" />
+                <InputGroup v-model="sideData.name" label="阵营名称" />
               </div>
               <StandardIdentitySelect
                 v-model="sideData.standardIdentity"
                 v-model:fill-color="sideData.symbolOptions.fillColor"
               />
-              <SimpleDivider class="mt-4 mb-4">Root units</SimpleDivider>
+              <SimpleDivider class="mt-4 mb-4">根单位</SimpleDivider>
               <div class="space-y-6">
                 <template v-for="(unit, i) in sideData.units" :key="i">
                   <div class="flex items-end gap-4 md:grid md:grid-cols-2">
-                    <InputGroup label="Root unit name" v-model="unit.rootUnitName" />
+                    <InputGroup label="根单位名称" v-model="unit.rootUnitName" />
                     <NewMilitarySymbol
                       :size="32"
                       :sidc="unitSidc(unit, sideData)"
@@ -246,21 +245,21 @@ function removeUnit(side: InitialSideData, unit: RootUnit) {
                   <div class="mt-4 grid gap-4 md:grid-cols-2">
                     <SymbolCodeSelect
                       class=""
-                      label="Main icon"
+                      label="主图标"
                       v-model="unit.rootUnitIcon"
                       :items="iconItems(sideData.standardIdentity)"
                       :symbol-options="sideData.symbolOptions"
                     />
                     <SymbolCodeSelect
                       class="w-full"
-                      label="Echelon"
+                      label="编制层级"
                       v-model="unit.rootUnitEchelon"
                       :items="echelonItems(sideData.standardIdentity)"
                       :symbol-options="sideData.symbolOptions"
                     />
                   </div>
                   <p class="text-muted-foreground text-sm">
-                    Don't worry if you can't find the right icon. You can change it later.
+                    如果你找不到合适的图标，不用担心，之后可以随时更改。
                   </p>
                   <SimpleDivider v-if="i < sideData.units.length - 1" />
                 </template>
@@ -273,7 +272,7 @@ function removeUnit(side: InitialSideData, unit: RootUnit) {
                   :disabled="!sideData.units.length"
                   @click="removeUnit(sideData, sideData.units[sideData.units.length - 1])"
                 >
-                  Remove unit
+                  移除单位
                 </Button>
                 <span class="text-border">|</span>
                 <Button
@@ -282,7 +281,7 @@ function removeUnit(side: InitialSideData, unit: RootUnit) {
                   size="sm"
                   @click="addRootUnit(sideData)"
                 >
-                  + Add root unit
+                  + 添加根单位
                 </Button>
               </footer>
               <Button
@@ -292,36 +291,36 @@ function removeUnit(side: InitialSideData, unit: RootUnit) {
                 v-if="idx === form.sides.length - 1"
                 @click="form.sides.pop()"
               >
-                Remove side
+                移除阵营
               </Button>
             </div>
             <footer class="mt-6 flex justify-end">
               <Button type="button" variant="link" size="sm" @click="addSide()">
-                + Add side
+                + 添加阵营
               </Button>
             </footer>
           </template>
         </FormCard>
-        <FormCard label="Scenario start time">
+        <FormCard label="场景开始时间">
           <template #description>
-            <p>Select a start time and time zone.</p>
+            <p>选择开始时间和时区。</p>
           </template>
-          <TimezoneSelect label="Time zone" v-model="timeZone" />
+          <TimezoneSelect label="时区" v-model="timeZone" />
 
           <div class="grid grid-cols-3 gap-6">
-            <InputGroup label="Year" type="number" v-model="year" />
-            <InputGroup label="Month" type="number" v-model="month" />
-            <InputGroup label="Day" type="number" v-model="day" />
+            <InputGroup label="年" type="number" v-model="year" />
+            <InputGroup label="月" type="number" v-model="month" />
+            <InputGroup label="日" type="number" v-model="day" />
           </div>
           <div class="grid grid-cols-2 gap-6">
-            <InputGroup label="Hour" v-model="hour" type="number" min="0" max="23" />
-            <InputGroup label="Minute" v-model="minute" type="number" min="0" max="59" />
+            <InputGroup label="时" v-model="hour" type="number" min="0" max="23" />
+            <InputGroup label="分" v-model="minute" type="number" min="0" max="59" />
           </div>
           <p class="text-muted-foreground font-mono">{{ resDateTime.format() }}</p>
         </FormCard>
         <FormCard
-          label="Symbology standard"
-          description="Select the symbology standard you prefer to use."
+          label="符号体系标准"
+          description="选择你偏好的符号体系标准。"
         >
           <RadioGroupList
             :items="stableSymbologyStandardOptions"
@@ -329,9 +328,9 @@ function removeUnit(side: InitialSideData, unit: RootUnit) {
           />
         </FormCard>
         <div class="flex justify-end space-x-3 px-4 sm:px-0">
-          <Button type="submit">Create scenario</Button>
+          <Button type="submit">创建场景</Button>
           <Button asChild variant="secondary"
-            ><RouterLink to="/">Cancel</RouterLink></Button
+            ><RouterLink to="/">取消</RouterLink></Button
           >
         </div>
       </form>

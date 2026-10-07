@@ -96,14 +96,14 @@ const toggleFreehand = useToggle(freehand);
 </script>
 
 <template>
-  <MapEditorSubToolbar label="Draw">
-    <MainToolbarButton title="Select" :active="!currentDrawType" @click="cancel()">
+  <MapEditorSubToolbar label="绘制">
+    <MainToolbarButton title="选择" :active="!currentDrawType" @click="cancel()">
       <SelectIcon class="size-5" />
     </MainToolbarButton>
     <DrawToolSplitButton :current-draw-type="currentDrawType" @select="drawShape" />
     <MainToolbarButton
       v-if="!controlMeasureArmed"
-      title="Freehand"
+      title="手绘"
       @click="toggleFreehand()"
       :active="freehand"
     >
@@ -119,21 +119,21 @@ const toggleFreehand = useToggle(freehand);
     <ControlMeasureDefaultsPopover :disabled="!canControlMeasures" />
     <div class="border-border mx-1 h-5 border-l" />
     <MainToolbarButton
-      title="Keep tool active to add multiple"
+      title="保持工具启用以连续添加"
       @click="toggleAddMultiple()"
       :active="addMultiple"
     >
       <IconLockOutline v-if="addMultiple" class="size-5" />
       <IconLockOpenVariantOutline v-else class="size-5" />
     </MainToolbarButton>
-    <MainToolbarButton title="Snap to grid" @click="toggleSnap()" :active="snap">
+    <MainToolbarButton title="对齐网格" @click="toggleSnap()" :active="snap">
       <SnapIcon class="size-5" />
     </MainToolbarButton>
-    <MainToolbarButton title="Edit" @click="startModify()" :active="isModifying">
+    <MainToolbarButton title="编辑" @click="startModify()" :active="isModifying">
       <EditIcon class="size-5" />
     </MainToolbarButton>
     <MainToolbarButton
-      title="Record feature geometry"
+      title="记录要素几何"
       @click="toggleRecordingGeometry()"
       :active="isRecordingGeometry"
     >
@@ -142,8 +142,8 @@ const toggleFreehand = useToggle(freehand);
     <MainToolbarButton
       :title="
         controlMeasureArmed
-          ? 'Translate is not available for control measures yet'
-          : 'Translate'
+          ? '控制措施暂不支持平移'
+          : '平移'
       "
       :disabled="controlMeasureArmed"
       @click="toggleTranslate()"
@@ -152,14 +152,14 @@ const toggleFreehand = useToggle(freehand);
       <MoveIcon class="size-5" />
     </MainToolbarButton>
     <MainToolbarButton
-      title="Duplicate selected"
+      title="复制所选"
       :disabled="selectedFeatureIds.size === 0"
       @click="duplicateSelected()"
     >
       <DuplicateIcon class="size-5" />
     </MainToolbarButton>
     <MainToolbarButton
-      title="Delete"
+      title="删除"
       :disabled="selectedFeatureIds.size === 0"
       @click="deleteSelected()"
     >

@@ -75,16 +75,16 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <MapEditorSubToolbar label="Measure">
+  <MapEditorSubToolbar label="测量">
     <MainToolbarButton
-      title="Length"
+      title="长度"
       @click="measurementType = 'LineString'"
       :active="measurementType === 'LineString'"
     >
       <LengthIcon class="size-5" />
     </MainToolbarButton>
     <MainToolbarButton
-      title="Area"
+      title="面积"
       @click="measurementType = 'Polygon'"
       :active="measurementType === 'Polygon'"
     >
@@ -92,7 +92,7 @@ onUnmounted(() => {
     </MainToolbarButton>
     <div class="border-border mx-1 h-5 border-l" />
     <MainToolbarButton
-      title="Show segment lengths"
+      title="显示分段长度"
       @click="showSegments = !showSegments"
       :active="showSegments"
     >

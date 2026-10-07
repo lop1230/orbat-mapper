@@ -44,7 +44,7 @@ const overlayClasses =
         size="icon"
         class="size-7"
         @click="setMode('overlay')"
-        title="Overlay"
+        title="浮层"
       >
         <OverlayPanelIcon class="size-3.5" />
       </Button>
@@ -53,7 +53,7 @@ const overlayClasses =
         size="icon"
         class="size-7"
         @click="setMode('sidebar')"
-        title="Sidebar"
+        title="侧边栏"
       >
         <PanelRightIcon class="size-3.5" />
       </Button>
@@ -63,7 +63,7 @@ const overlayClasses =
         size="icon"
         class="size-7"
         @click="ui.toggleDetailsPanelPinned()"
-        title="Pin panel"
+        title="固定面板"
       >
         <PinIcon v-if="isPinned" class="size-3.5" />
         <PinOffIcon v-else class="size-3.5" />

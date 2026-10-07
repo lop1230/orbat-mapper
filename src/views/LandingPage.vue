@@ -12,40 +12,40 @@ import { UseDark } from "@vueuse/components";
 
 const features = [
   {
-    name: "Create ORBATs",
-    description: "Quickly build and organize orders of battle with drag-and-drop.",
+    name: "创建作战序列",
+    description: "通过拖放快速构建和组织作战序列。",
   },
   {
-    name: "ORBAT chart view",
-    description: "Visualize unit hierarchies as organizational charts.",
+    name: "作战序列图表视图",
+    description: "将单位层级结构可视化为组织架构图。",
   },
   {
-    name: "Timeline and playback",
-    description: "Animate unit movements and scenario events over time.",
+    name: "时间线回放",
+    description: "随时间动态播放单位运动与场景事件。",
   },
   {
-    name: "Symbol browser",
-    description: "Search, preview, and export military symbols as PNG or SVG.",
+    name: "符号浏览器",
+    description: "搜索、预览并导出军事符号为 PNG 或 SVG。",
   },
   {
-    name: "Text to ORBAT",
-    description: "Parse text into unit hierarchies automatically.",
+    name: "文本转作战序列",
+    description: "将文本自动解析为作战序列层级结构。",
   },
   {
-    name: "Grid edit mode",
-    description: "Efficient spreadsheet-style editing of units and equipment.",
+    name: "表格编辑模式",
+    description: "以电子表格方式高效编辑单位与装备。",
   },
   {
-    name: "Draw and measure",
-    description: "Draw map features and measure distances and areas.",
+    name: "绘制与测量",
+    description: "绘制地图要素并测量距离与面积。",
   },
   {
-    name: "Import and export",
-    description: "Support for GeoJSON, KML/KMZ, MilX, XLSX, and CSV formats.",
+    name: "导入与导出",
+    description: "支持 GeoJSON、KML/KMZ、MilX、XLSX 与 CSV 等格式。",
   },
   {
-    name: "Client side only",
-    description: "Everything is stored on your computer. No server required.",
+    name: "纯客户端运行",
+    description: "所有数据都存储在你的电脑上，无需服务器。",
   },
 ];
 </script>
@@ -56,9 +56,9 @@ const features = [
       class="bg-muted relative top-0 right-0 left-0 flex items-center justify-center gap-8 p-1 text-center"
     >
       <p>
-        Follow the
+        请关注
         <a href="https://github.com/orbat-mapper/orbat-mapper" class="underline"
-          >development on GitHub <GithubIcon class="inline size-6 sm:size-10" />
+          >GitHub 上的开发进展 <GithubIcon class="inline size-6 sm:size-10" />
         </a>
       </p>
       <UseDark v-slot="{ isDark, toggleDark }">
@@ -66,7 +66,7 @@ const features = [
           variant="ghost"
           size="icon"
           @click="toggleDark()"
-          title="Toggle dark mode"
+          title="切换深色模式"
         >
           <SunIcon v-if="isDark" /><MoonStarIcon v-else />
         </Button>
@@ -80,13 +80,13 @@ const features = [
             <h1
               class="text-heading text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
             >
-              <span class="text-red-900 dark:text-red-900/90">ORBAT</span>
-              Mapper
+              <span class="text-red-900 dark:text-red-900/90">作战序列</span>
+              地图工具
             </h1>
             <p
               class="text-muted-foreground mx-auto mt-3 max-w-md text-base sm:text-lg md:mt-5 md:max-w-3xl md:text-xl"
             >
-              Recreate historic battles and military scenarios in your browser
+              在浏览器中重现历史战役与军事想定
             </p>
             <div
               class="mt-4 flex flex-wrap items-center justify-center gap-1 text-sm sm:text-base"
@@ -95,19 +95,19 @@ const features = [
                 ><a
                   href="https://docs.orbat-mapper.app/guide/about-orbat-mapper"
                   target="_blank"
-                  >View documentation
+                  >查看文档
                   <ExternalLinkIcon class="text-muted-foreground -ml-1" /></a
               ></Button>
               <span class="text-muted-foreground/70" aria-hidden="true">|</span>
               <Button as-child variant="link">
                 <router-link :to="{ name: TEXT_TO_ORBAT_ROUTE }"
-                  >Text to ORBAT</router-link
+                  >文本转作战序列</router-link
                 >
               </Button>
               <span class="text-muted-foreground/70" aria-hidden="true">|</span>
               <Button as-child variant="link">
                 <router-link :to="{ name: SYMBOL_BROWSER_ROUTE }"
-                  >Symbol Browser</router-link
+                  >符号浏览器</router-link
                 >
               </Button>
               <span class="text-muted-foreground/70" aria-hidden="true">|</span>
@@ -127,9 +127,9 @@ const features = [
       <section id="features" class="bg-muted/40 dark:bg-muted/20">
         <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div class="mx-auto max-w-3xl text-center">
-            <h2 class="text-heading text-3xl font-bold tracking-tight">Features</h2>
+            <h2 class="text-heading text-3xl font-bold tracking-tight">功能特性</h2>
             <p class="text-muted-foreground mt-4 text-lg">
-              Some of the things you can do with ORBAT mapper
+              使用 ORBAT mapper 可以做的部分事情
             </p>
           </div>
           <dl
@@ -165,7 +165,7 @@ const features = [
             <a
               href="https://docs.orbat-mapper.app/guide/about-orbat-mapper"
               class="text-muted-foreground hover:text-foreground text-sm leading-6"
-              >About</a
+              >关于</a
             >
           </div>
 
@@ -173,7 +173,7 @@ const features = [
             <a
               href="https://docs.orbat-mapper.app/guide/getting-started"
               class="text-muted-foreground hover:text-foreground text-sm leading-6"
-              >Getting started</a
+              >快速开始</a
             >
           </div>
 
@@ -181,7 +181,7 @@ const features = [
             <a
               href="https://docs.orbat-mapper.app/resources/tools"
               class="text-muted-foreground hover:text-foreground text-sm leading-6"
-              >Resources</a
+              >资源</a
             >
           </div>
 
@@ -189,7 +189,7 @@ const features = [
             <a
               href="https://docs.orbat-mapper.app/support"
               class="text-muted-foreground hover:text-foreground text-sm leading-6"
-              >Support</a
+              >支持</a
             >
           </div>
         </nav>
